@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet" />
+
+    <!--Icon-->
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!--Style-->
+    <link rel="stylesheet" href="style.css" />
+
+    <!--Title-->
+    <title>
+        Project-1
+    </title>
+</head>
+
+<body>
+    <div class="container">
+        <!--Header-->
+        <section class="header">
+            <!-- Logo -->
+            <a href="#home" class="logo">Project-1<span>.</span></a>
+
+            <!-- Navigasi -->
+            <nav>
+                <ul class="navBar" id="navBar">
+                    <li><a href="#home" class="home-active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="searchBox">
+                <form action="" class="search">
+                    <input type="text" placeholder="Search for products..." class="search__input">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </section>
+
+        <!--Home-->
+        <section id="home" class="home">
+            <h1 class="homeTitle"><span>Hello</span> There!</h1>
+            <p class="homeDescription"></p>
+        </section>
+
+        <!--About-->
+        <section id="about" class="about">
+            <h1 class="aboutTitle"><span>About</span> Us</h1>
+            <p class="aboutDescription"></p>
+        </section>
+
+        <!-- Categories -->
+        <section id="categories" class="categories">
+            <h1 class="categoriesTitle">Our <span>Categories</span></h1>
+            <p class="categoriesSubTitle">Shop by our categories</p>
+            <div class="categoriesGrid" id="categoriesGrid"></div>
+        </section>
+
+        <!--Products-->
+        <section id="products" class="products">
+            <h1 class="productsTitle">Our <span>Products</span></h1>
+            <p class="productsSubTitle">Discover our featured products</p>
+            <div class="productsTabButton">
+                <span class="tabButton active" data-target="#bestSeller">Best Seller</span>
+                <span class="tabButton" data-target="#newAdded">New Added</span>
+            </div>
+            <div class="productsGrid" id="productsGrid"></div>
+            <div class="productsViewAllButton">
+                <a href="allproducts.html" class="productsViewAllButton">View All Products</a>
+            </div>
+        </section>
+
+        <!--Contact-->
+        <section id="contact" class="contact">
+            <h1 class="contactTitle"><span>Contact</span> Us</h1>
+            <p class="contactSubTitle">Get in touch with us</p>
+            <div class="contactGrid" id="contactGrid"></div>
+        </section>
+
+        <!--Footer-->
+        <section id="footer" class="footer">
+            <div class="container">
+                <ul class="quickLinkList">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact"> Contact</a></li>
+                </ul>
+                <ul class="socmed">
+                    <li>
+                        <i class="fab fa-facebook"></i>
+                    </li>
+                    <li>
+                        <i class="fab fa-twitter"></i>
+                    </li>
+                    <li>
+                        <i class="fab fa-instagram"></i>
+                    </li>
+                    <li>
+                        <i class="fab fa-youtube"></i>
+                    </li>
+                </ul>
+                <p>&copy; 2025 Project-1. All rights reserved.</p>
+            </div>
+        </section>
+    </div>
+
+    <!--Script-->
+    <script src="script.js"></script>
+</body>
+
+</html>
