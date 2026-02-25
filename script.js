@@ -33,17 +33,13 @@ const productsBestSeller = [
     { id: 2, product: "ManoHARA Mesh 2500", category: "Pupuk Kalsium", image: "/assets/manohara mesh.jpg" },
     { id: 3, product: "AFI Stick", category: "Perekat", image: "/assets/afi stick.jpg" },
     { id: 4, product: "Premium LJS", category: "Pupuk Kalsium", image: "/assets/premium ljs.jpg" },
-    { id: 5, product: "HARA GARUDA Mesh 4000", category: "Pupuk Kalsium", image: "/assets/hara garuda.jpg" },
-    { id: 6, product: "Dewa Dewi", category: "Pupuk KCL", image: "/assets/dewa dewi kcl.jpg" },
 ]
 
 const productsNewAdded = [
-    { id: 1, product: "Laba-laba", category: "Pupuk Kalsium", image: "/assets/manohara mesh.jpg" },
-    { id: 2, product: "Seper Soil", category: "KCL", image: "/assets/manohara mesh.jpg" },
-    { id: 3, product: "Seper Soil", category: "KCL", image: "/assets/manohara mesh.jpg" },
-    { id: 4, product: "Seper Soil", category: "KCL", image: "/assets/manohara mesh.jpg" },
-    { id: 5, product: "Seper Soil", category: "KCL", image: "/assets/manohara mesh.jpg" },
-    { id: 6, product: "Seper Soil", category: "KCL", image: "/assets/manohara mesh.jpg" },
+    { id: 5, product: "HARA GARUDA Mesh 4000", category: "Pupuk Kalsium", image: "/assets/hara garuda.jpg" },
+    { id: 6, product: "Dewa Dewi", category: "Pupuk KCL", image: "/assets/dewa dewi kcl.jpg" },
+    { id: 3, product: "AFI Stick", category: "Perekat", image: "/assets/afi stick.jpg" },
+    { id: 4, product: "Premium LJS", category: "Pupuk Kalsium", image: "/assets/premium ljs.jpg" },
 ]
 
 function displayProducts(products) {
@@ -56,15 +52,11 @@ function displayProducts(products) {
         <div class="productCard">
             <img src="${product.image}" alt="${product.product}">
             <span>${product.category}</span>
-            <a href="details.html">
+            <a href="details.html#${product.id}">
                 <h2 class="productName">${product.product}</h2>
             </a>
             <div class="productRating">
-                <i class = "fi fi-rs-star"></i>
-                <i class = "fi fi-rs-star"></i>
-                <i class = "fi fi-rs-star"></i>
-                <i class = "fi fi-rs-star"></i>
-                <i class = "fi fi-rs-star"></i>
+                ⭐⭐⭐⭐⭐
             </div>
         </div>
         `
@@ -76,12 +68,34 @@ displayProducts(productsBestSeller);
 const tabs = document.querySelectorAll(".tabButton")
 tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-        // 1. Remove "active" class from the previous active tab
         document.querySelector(".tabButton.active")?.classList.remove("active")
-        // 2. Add "active" class to the clicked tab
         tab.classList.add("active")
         const target = tab.dataset.target
         const products = target === "#bestSeller" ? productsBestSeller : productsNewAdded
         displayProducts(products)
     })
 })
+
+const detailProducts = [
+    { id: 1, product: "ManoHARA Premium Mesh 4000", category: "Pupuk Kalsium", image1: "/assets/manohara premium.jpg", image2: "/assets/manohara premium.jpg" },
+    { id: 2, product: "ManoHARA Mesh 2500", category: "Pupuk Kalsium", image1: "/assets/manohara mesh.jpg", image2: "/assets/manohara mesh.jpg" },
+    { id: 3, product: "AFI Stick", category: "Perekat", image1: "/assets/afi stick.jpg", image2: "/assets/afi stick.jpg" },
+    { id: 4, product: "Premium LJS", category: "Pupuk Kalsium", image1: "/assets/premium ljs.jpg", image1: "/assets/premium ljs.jpg" },
+    { id: 5, product: "HARA GARUDA Mesh 4000", category: "Pupuk Kalsium", image1: "/assets/hara garuda.jpg", image1: "/assets/hara garuda.jpg" },
+    { id: 6, product: "Dewa Dewi", category: "Pupuk KCL", image1: "/assets/dewa dewi kcl.jpg", image1: "/assets/hara garuda.jpg" },
+]
+
+/* Hamburger Menu */
+const hamburger = document.getElementById("hamburger");
+const navBar = document.getElementById("navBar");
+
+if (hamburger && navBar) {
+    hamburger.addEventListener("click", () => {
+        navBar.classList.toggle("active");
+    });
+
+    // Close menu when link is clicked
+    document.querySelectorAll(".navBar li a").forEach(n => n.addEventListener("click", () => {
+        navBar.classList.remove("active");
+    }));
+}

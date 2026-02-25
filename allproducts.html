@@ -36,30 +36,136 @@
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
+
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
         </section>
 
         <section class="allproducts">
             <h1>Our <span>Products</span></h1>
             <div class="searchBoxAll">
                 <form action="" class="searchall">
-                    <input type="text" placeholder="Search for products..." class="search__input">
+                    <input type="text" id="productSearchInput" placeholder=" Search for products..."
+                        class="search__input">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
             <div class="categoriesTabButton">
-                <span class="tabButton active" data-target="#all">All</span>
-                <span class="tabButton" data-target="#kalsium">Pupuk Kalsium</span>
-                <span class="tabButton" data-target="#perekat">Perekat</span>
-                <span class="tabButton" data-target="#kcl">Pupuk KCL</span>
-                <span class="tabButton" data-target="#ppc">Pupuk Pelengkap Cair (PPC)</span>
+                <span class="tabButton active" data-category="all">All</span>
+                <span class="tabButton" data-category="Pupuk Kalsium">Pupuk Kalsium</span>
+                <span class="tabButton" data-category="Perekat">Perekat</span>
+                <span class="tabButton" data-category="Pupuk KCL">Pupuk KCL</span>
+                <span class="tabButton" data-category="Pupuk Pelengkap Cair (PPC)">Pupuk Pelengkap Cair (PPC)</span>
             </div>
-            <div class="productsGrid" id="productsGrid"></div>
+            <div class="productDisplay" id="productDisplay"></div>
     </div>
+    </section>
+
+    <section id="footer" class="footer">
+        <div class="container">
+            <ul class="quickLinkList">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact"> Contact</a></li>
+            </ul>
+            <ul class="socmed">
+                <li>
+                    <i class="fab fa-facebook"></i>
+                </li>
+                <li>
+                    <i class="fab fa-twitter"></i>
+                </li>
+                <li>
+                    <i class="fab fa-instagram"></i>
+                </li>
+                <li>
+                    <i class="fab fa-youtube"></i>
+                </li>
+            </ul>
+            <p>&copy; 2025 Project-1. All rights reserved.</p>
+        </div>
     </section>
 
     </div>
 
     <!--Script-->
+    <script>
+        const productsBestSeller = [
+            { id: 1, product: "ManoHARA Premium Mesh 4000", category: "Pupuk Kalsium", image: "/assets/manohara premium.jpg" },
+            { id: 2, product: "ManoHARA Mesh 2500", category: "Pupuk Kalsium", image: "/assets/manohara mesh.jpg" },
+            { id: 3, product: "AFI Stick", category: "Perekat", image: "/assets/afi stick.jpg" },
+            { id: 4, product: "Premium LJS", category: "Perekat", image: "/assets/premium ljs.jpg" },
+        ];
+
+        const productsNewAdded = [
+            { id: 5, product: "HARA GARUDA Mesh 4000", category: "Pupuk Kalsium", image: "/assets/hara garuda.jpg" },
+            { id: 6, product: "Dewa Dewi", category: "Pupuk KCL", image: "/assets/dewa dewi kcl.jpg" },
+            { id: 3, product: "AFI Stick", category: "Perekat", image: "/assets/afi stick.jpg" },
+            { id: 4, product: "Premium LJS", category: "Perekat", image: "/assets/premium ljs.jpg" },
+        ];
+
+        const allProducts = [...new Map([...productsBestSeller, ...productsNewAdded].map(item => [item.id, item])).values()];
+
+        const productDisplay = document.getElementById("productDisplay");
+        const tabs = document.querySelectorAll(".tabButton");
+
+        function displayProducts(items) {
+            productDisplay.innerHTML = items.map(p => `
+                <div class="productCard">
+                    <img src="${p.image}" alt="${p.product}">
+                    <span>${p.category}</span>
+                    <a href="details.html#${p.id}">
+                        <h2 class="productName">${p.product}</h2>
+                    </a>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            `).join("");
+        }
+
+        displayProducts(allProducts);
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                document.querySelector(".tabButton.active")?.classList.remove("active");
+                tab.classList.add("active");
+                const category = tab.dataset.category;
+                const filtered = category === "all"
+                    ? allProducts
+                    : allProducts.filter(p => p.category === category);
+
+                displayProducts(filtered);
+            });
+        });
+    </script>
+
+    <script>
+        const searchInput = document.getElementById("productSearchInput");
+
+        // Fungsi utama untuk filter berdasarkan teks
+        searchInput.addEventListener("input", (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            // 1. Filter data berdasarkan nama produk
+            const filteredProducts = allProducts.filter(p => {
+                return p.product.toLowerCase().includes(searchTerm);
+            });
+
+            // 2. Tampilkan hasil filter ke layar
+            displayProducts(filteredProducts);
+
+            // 3. (Opsional) Reset status tombol kategori
+            // Jika user sedang mencari, sebaiknya tidak ada tombol kategori yang terlihat 'active'
+            if (searchTerm !== "") {
+                document.querySelector(".tabButton.active")?.classList.remove("active");
+            } else {
+                // Jika kolom search kosong, kembalikan ke tab 'All'
+                document.querySelector('[data-category="all"]')?.classList.add("active");
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 

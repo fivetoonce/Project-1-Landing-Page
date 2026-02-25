@@ -31,7 +31,6 @@ body {
 }
 
 /* Header */
-
 .header {
     position: fixed;
     top: 0;
@@ -47,42 +46,15 @@ body {
     transition: 0.5s;
 }
 
-/* Search Box */
-
-.searchBox {
-    position: relative;
-
-    input {
-        width: 220px;
-        height: 35px;
-        border: none;
-        outline: none;
-        background: var(--bg-color);
-        border-radius: 50px;
-        color: var(--primary-color);
-        font-size: 14px;
-        text-align: left;
-        padding: 0 10px;
-    }
-
-    button {
-        cursor: pointer;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: scale(0.85);
-        background: var(--primary-color);
-        border: none;
-        border-radius: 50px;
-        color: var(--bg-color);
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
+/* Hamburger */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--bg-color);
 }
 
 /* Logo */
-
 .logo {
     font-size: 1.7rem;
     font-weight: 600;
@@ -96,7 +68,6 @@ body {
 }
 
 /* Navigation */
-
 .navBar {
     display: flex;
     align-items: center;
@@ -120,7 +91,6 @@ body {
 }
 
 /* Home */
-
 .home {
     background-color: var(--bg-color);
     width: 100%;
@@ -150,7 +120,6 @@ body {
 }
 
 /* About */
-
 .about {
     max-width: 968px;
     background-color: var(--bg-color);
@@ -178,7 +147,6 @@ body {
 }
 
 /* Categories */
-
 .categories {
     max-width: 968px;
     background-color: var(--bg-color);
@@ -206,7 +174,6 @@ body {
 }
 
 /* Categories Card */
-
 .categoriesGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -269,8 +236,8 @@ body {
 }
 
 /* Products */
-
-.products {
+.products,
+.featuredProducts {
     max-width: 968px;
     background-color: var(--bg-color);
     margin-left: auto;
@@ -297,7 +264,6 @@ body {
 }
 
 /* Products Tab Button */
-
 .productsTabButton {
     display: flex;
     column-gap: 1rem;
@@ -333,7 +299,6 @@ body {
 }
 
 /* Products Card */
-
 .productsGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -346,6 +311,7 @@ body {
     border-radius: 0.45rem;
     box-shadow: 1px 2px 11px 0 rgba(0, 0, 0, 0.2);
     position: relative;
+    cursor: pointer;
 
     img {
         width: 100%;
@@ -377,7 +343,6 @@ body {
 }
 
 /* Products View All Button */
-
 .productsViewAllButton {
     display: flex;
     justify-content: center;
@@ -402,7 +367,6 @@ body {
 }
 
 /* Contact */
-
 .contact {
     max-width: 968px;
     background-color: var(--bg-color);
@@ -432,7 +396,6 @@ body {
 }
 
 /* Footer */
-
 .footer {
     background-color: var(--primary-color);
     color: var(--bg-color);
@@ -501,12 +464,12 @@ body {
     color: var(--primary-color);
     margin-left: auto;
     margin-right: auto;
-    padding: 8rem 2rem;
+    margin-top: 6rem;
 
     h1 {
         font-size: 2.5rem;
         font-weight: 600;
-        margin-bottom: .25rem;
+        margin-bottom: .5rem;
         text-align: center;
     }
 
@@ -521,6 +484,7 @@ body {
     max-width: 450px;
     margin: 0 auto;
     padding: 1rem;
+    margin-bottom: .25rem;
 
     input {
         width: 100%;
@@ -559,7 +523,6 @@ body {
 }
 
 /* Categories Tab Button */
-
 .categoriesTabButton {
     display: flex;
     column-gap: 1rem;
@@ -596,48 +559,236 @@ body {
 }
 
 /* All Products Grid */
-
-/* Detail Produk */
-.detailProduk {
-    max-width: 100%;
-    background-color: var(--bg-color);
-    color: var(--primary-color);
+.detailsProduct {
+    max-width: 968px;
     margin-left: auto;
     margin-right: auto;
-    padding: 8rem 2rem;
-}
-
-.detailProdukContainerGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    align-items: center;
-}
-
-.detailLeft {
     display: flex;
-    align-items: flex-start;
+    margin-top: 70px;
+    align-items: stretch;
 }
 
-.detailLeft,
-.detailImg {
-    gap: .625rem;
+.detailsProduct .single-pro-image {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
-.detailImg {
-    width: 100px;
-    opacity: 0.4;
+#MainImg {
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.small-image-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-img-col {
+    flex-basis: 24%;
     cursor: pointer;
 }
 
-.detailMainImg {
-    max-width: 350px;
+.detailsProduct .single-pro-details {
+    width: 50%;
+    padding-top: 30px;
 }
 
-.activeImg {
-    opacity: 1;
+.detailsProduct .single-pro-details h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
-.detailLeft h1 {
+.detailsProduct .single-pro-details h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.detailsProduct .single-pro-details h3 {
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.sizeOptions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sizeOption {
+    padding: 2px 5px;
+    border: 2.5px solid #e2e2e2;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sizeOption.active {
+    background: var(--border-color);
+    color: var(--bg-color);
+}
+
+.sizeOption:hover {
+    background: var(--border-color);
+    color: var(--bg-color);
+}
+
+.reviewBuyer {
+    margin-bottom: 20px;
+}
+
+.cardReview {
+    padding: .5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background-color: var(--bg-color);
+    border-radius: .5rem;
+    box-shadow: 1px 2px 11px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.cardReview img {
+    max-width: 50px;
+    border-radius: 100%;
+}
+
+.cardReviewContent {
+    display: flex;
+    gap: 1rem;
+}
+
+.cardReviewContent span {
     font-size: 2rem;
-    margin-block: .625rem 1.5rem;
+    color: var(--primary-color);
+}
+
+.cardDetails p {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.buyButton {
+    display: block;
+    padding: 10px 20px;
+    background: var(--border-color);
+    color: var(--bg-color);
+    border-radius: .5rem;
+    font-size: 1.15rem;
+    font-weight: 400;
+    transition: transform 0.5s ease-out;
+    cursor: pointer;
+    box-shadow: 1px 2px 11px 0 rgba(0, 0, 0, 0.2);
+    width: 150px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#productdetails .single-pro-details input:focus {
+    outline: none;
+}
+
+#productdetails .single-pro-details span {
+    line-height: 25px;
+}
+
+.productRatingDetails {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+
+.featuredProducts h2 {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+
+    .header,
+    .headerAllProducts {
+        padding: 15px 30px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .navBar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        background: var(--primary-color);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 1.5rem;
+        transition: 0.5s;
+        box-shadow: 0 8px 11px rgb(14 55 54 /15%);
+    }
+
+    .navBar.active {
+        left: 0;
+    }
+
+    ::not(.active) {
+        display: none;
+    }
+}
+
+@media (max-width: 477px) {
+    .header {
+        padding: 10px 20px;
+    }
+
+    #productdetails {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #productdetails .single-pro-image {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    #productdetails .single-pro-details {
+        width: 100%;
+    }
+}
+
+.productDisplay {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+
+    span {
+        color: var(--primary-color);
+    }
+}
+
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    background: #f9f9f9;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.cat-label {
+    font-size: 0.8rem;
+    color: #888;
 }
