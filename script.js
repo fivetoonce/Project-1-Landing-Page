@@ -7,16 +7,20 @@ const categories = [
     { category: "PPC", item: "2 Item", image: "/assets/ppc.png" }
 ]
 
-const categoriesGrid = document.getElementById("categoriesGrid")
-
 function displayCategory(category) {
+    const categoriesGrid = document.getElementById("categoriesGrid")
+    if (!categoriesGrid) {
+        return;
+    }
     categoriesGrid.innerHTML = categories.map((category) => {
         return `
         <div class="categoryCard">
             <img src="${category.image}" alt="${category.category}">
             <h3>${category.category}</h3>
             <p>${category.item}</p>
-            <button class="categoryButton">See Products</button>
+            <a href="allproducts.html">
+                <button class="categoryButton">See Products</button>
+            </a>
         </div>
         `
     }).join("");
@@ -42,9 +46,11 @@ const productsNewAdded = [
     { id: 6, product: "Seper Soil", category: "KCL", image: "/assets/manohara mesh.jpg" },
 ]
 
-const productsGrid = document.getElementById("productsGrid")
-
 function displayProducts(products) {
+    const productsGrid = document.getElementById("productsGrid")
+    if (!productsGrid) {
+        return;
+    }
     productsGrid.innerHTML = products.map((product) => {
         return `
         <div class="productCard">
@@ -79,4 +85,3 @@ tabs.forEach((tab) => {
         displayProducts(products)
     })
 })
-
